@@ -28,14 +28,19 @@ class ExtractorXl:
                 file_path, sheet_name=sheet_name, skiprows=11, nrows=366)
 
             series = [''] * df.shape[0]
-            for i in range(1, 7):
+            for i in range(1, 9):
                 if f'Ponto {i}' not in df:
                     df.insert(i, f'Ponto {i}', series)
 
+            # unnamed_columns = [
+            #     col for col in df.columns if col.startswith('Unnamed:')]
+            # if unnamed_columns:
+            #     df = df.drop(columns=unnamed_columns)
+
             df.columns = [
                 'data', 'ponto_1', 'ponto_2', 'ponto_3', 'ponto_4', 'ponto_5',
-                'ponto_6', 'observacao', 'exclusao', 'CH', 'HT', 'EX', 'AT',
-                'FA', 'AE', 'AN', 'EX1'
+                'ponto_6', 'ponto_7', 'ponto_8', 'observacao', 'exclusao',
+                'CH', 'HT', 'EX', 'AT', 'FA', 'AE', 'AN', 'EX1'
             ]
 
             df.drop('exclusao', axis=1, inplace=True)
