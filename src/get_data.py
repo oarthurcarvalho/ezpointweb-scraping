@@ -42,7 +42,13 @@ class DataScraper:
         """
         chromedriver_autoinstaller.install()
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument("--headless")
+        chrome_options.add_experimental_option("prefs", {
+            "download.default_directory": "/home/artbdr/Documents/tmk-data/",
+            "download.prompt_for_download": False,
+            "download.directory_upgrade": True,
+            "safebrowsing.enabled": True
+        })
+        # chrome_options.add_argument("--headless")
         chrome_options.add_argument("--window-size=1920x1080")
 
         service = Service()
