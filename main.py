@@ -6,14 +6,14 @@ from src.upload_file import SharepointUploader
 from src.utils import gerar_datas, get_files
 
 if __name__ == '__main__':
-    datas = gerar_datas()
-
-    for range in datas:
-        datafim, datainicio = range
-        data_scraper = DataScraper(datainicio, datafim)
-        data_scraper.login()
-        data_scraper.download_report()
-        data_scraper.close()
+#    datas = gerar_datas()
+#
+#    for range in datas:
+#        datafim, datainicio = range
+#        data_scraper = DataScraper(datainicio, datafim)
+#        data_scraper.login()
+#        data_scraper.download_report()
+#        data_scraper.close()
 
     files = get_files()
     excel_extractor = ExtractorXl()

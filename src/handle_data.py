@@ -54,12 +54,14 @@ class ExtractorXl:
 
             aba = workbook[sheet_name]
             nome = aba['B2'].value
+            empresa = aba['B1'].value
             cargo = aba['B3'].value
             setor = aba['B4'].value
             matricula = aba['B5'].value
 
             # Adicione informações como colunas ao DataFrame da aba
             df['nome'] = nome
+            df['empresa'] = empresa
             df['cargo'] = cargo
             df['setor'] = setor
             df['matricula'] = matricula
@@ -80,13 +82,13 @@ class ExtractorXl:
     def remove_colunas_ponto(self, df):
 
         colunas_ponto = [
-            coluna for coluna in df.columns if coluna.startswith('ponto_')
+            coluna for coluna in df.columns if coluna.startswith('Ponto')
         ]
 
         for coluna in colunas_ponto:
-            numero = int(coluna.split('_')[1])
+            numero = int(coluna.split(' ')[1])
             if numero > 8:
-                df.drop(columns=coluna, inplace=True)
+                df.drop(columns=coluna, axis=1, inplace=True)
 
         return df
 
